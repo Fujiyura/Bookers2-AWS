@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <header>
+    <nav class='nav navbar-nav navbar-left' >
+      <span>Bookers</span>
+    </nav>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path, class: 'glyphicon glyphicon-home home' %></li>        
+        <% if user_signed_in? %>
+          <li><%= link_to "Users", show_users_path, class: 'glyphicon glyphicon-user users' %></li>
+          <li><%= link_to "Books", show_books_path, class: 'glyphicon glyphicon-book books' %></li>
+          <li><%= link_to "logout", destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+        <% else %>
+          <li><%= link_to "About", show_about_path, class: 'glyphicon glyphicon-link about' %></li>
+          <li><%= link_to "sign up", new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
+          <li><%= link_to "login", new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %></li>
+        <% end %>
+      </ul>
+    </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>
