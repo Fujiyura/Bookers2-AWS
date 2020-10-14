@@ -1,0 +1,2 @@
+class PofileImage < ApplicationRecord
+end
