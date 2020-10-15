@@ -10,13 +10,24 @@ class UsersController < ApplicationController
     @current_user_id = current_user.id
   end
   
-  private
-  def new
-    Book.new
+  def edit
+    target_user_id = params[:id]
+
+    if target_user_id == current_user.id
+      redirect_to 'show/#{current_user.id}'
+    end
+
+    @target_user = current_user
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    redirect_to user_path(user.id), notice: "You have updated user successfully."
   end
 
   private
   def user_params
-    params.require(:user).permit(:id, :name, image)
+    params.require(:user).permit(:id, :name, :introduction, :image)
   end
 end

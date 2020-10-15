@@ -1,18 +1,33 @@
-<p id="notice"><%= flash[:notice] %></p>
-<% if flash[:alert] %>
-  <p id="error_explanation"><%= flash[:alert] %></p>
-<% end %>
+<div class='col-xs-3'>
+  <%= render partial: 'shared/sidebar', locals: { user: @target_user, new_book: @new_book, current_user_id: current_user.id } %>
+</div>
 
-
-<p>
-  <strong>Title:</strong>
-  <%=@book.title %> 
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%=@book.body %> 
-</p>
-
-<%= link_to "Edit", edit_books_path(@book.id) %> |
-<%= link_to "back", index_books_path %>
+<div class='col-xs-9'>
+  <h2>Book detail</h2>
+  <table class='table table-hover table-inverse'>
+    <tr>
+      <td>
+        <%= link_to user_path(@target_user.id) do %>
+          <%= attachment_image_tag @target_user, :image, size: '40x40', format: 'jpeg', class: "attachment user profile_image", fallback: "no_image.jpg" %>
+          <br><%= @target_user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to book_path(@book.id) do %>
+          <%= @book.title %>
+        <% end %>
+      </td>
+      <td>
+        <%= @book.body %>
+      </td>
+      <% if @target_user.id == @book.user_id %>
+        <td>
+          <%= link_to 'Edit', edit_book_path(@book.id), class: 'btn-sm btn-success' %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', book_path(@book.id), method: 'delete', data: { confirm: "本当に消しますか？" }, class: 'btn-sm btn-danger' %>
+        </td>
+      <% end %>
+    </tr>
+  </table>
+</div>
