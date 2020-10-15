@@ -1,0 +1,84 @@
+// -- bootstrap import
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #fff;
+}
+ol,ul,td{
+  font-family:verdana, arial, helvetica, sans-serif;
+  font-size:13px;
+  line-height:18px;
+  margin:33px
+}
+p{
+  font-family:verdana, arial, helvetica, sans-serif;
+  font-size:13px;
+  line-height:18px;
+}
+pre{
+  background-color:#eee;
+  padding:10px;
+  font-size:11px
+}
+a{
+  color:#000
+}
+a:visited{
+  color:#666
+}
+a:hover{
+  color:#fff;
+  background-color:#000
+}
+th{
+  padding-bottom:5px
+}
+td{
+  padding-bottom:7px;
+  padding-left:5px;
+  padding-right:5px
+}
+div.field,div.actions{
+  margin-bottom:10px
+}
+#notice{
+  color:green
+}
+#error_explanation{
+  color:red
+}
+
+label{
+  display:block
+}
+header{
+  color:white
+}
+header .navbar-left span{
+  font-size:20px;
+  padding-top:10px
+}
+.body{
+  margin-top:51px
+}
+
+body {
+  margin: 0;
+}
+
+.navbar-left {
+    float: left !important;
+}
+
+.checkbox_field{
+  display: flex;
+}
+
+.checkbox_field > label{
+  margin: 0 5px;
+}

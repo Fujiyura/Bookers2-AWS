@@ -1,0 +1,27 @@
+<div class='col-xs-3'>
+  <%= render partial: 'shared/sidebar', :locals => {:user => @target_user, :new_book => @new_book, :current_user_id => @current_user_id } %>
+</div>
+
+<div class='col-xs-9'>
+<h2>Users</h2>
+
+<table class='table'>
+<thead>
+<tr>
+  <th>image</th>
+  <th>name</th>
+  <th colspan="3"></th>
+</tr>
+</thead>
+
+<tbody>
+<% @Users.each do || %>
+  <tr>
+      <td><img class='attachment user profile_image fallback' src='/assets/no-image.jpg'. alt='No image icon'></td>
+      <td><%= user.name %></td>
+      <td><%= link_to 'Show', '/Users/#{user.id}' %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</div>

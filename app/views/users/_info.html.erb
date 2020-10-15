@@ -1,0 +1,22 @@
+<h2>User info</h2>
+<table class='table'>
+  <tr>
+    <% if @user.image.present? %>
+      <%= image_tag attachment_url(@user, :image, :fill, 100, 100, format: 'jpg', class: 'attachment user profile_image fallback') %>
+    <% else %>
+      <%= image_tag 'no_image.jpg', :alt => 'no_image', :width => '100', :height => '100', :class => 'attachment user profile_image fallback' %>
+    <% end %>
+  </tr> 
+  <tr>
+    <th>name</th>
+    <th><%= @user.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= @user.introduction %></th>
+  </tr>
+</table>
+
+<div class='row'>
+  <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_25827" href="/users/:@user.id"></a>
+</div>
