@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
   	@books = Book.joins(:user) 
@@ -8,8 +9,13 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    @target_user = User.find(@book.user_id)
+    begin
+      @book = Book.find(params[:id])
+      @target_user = User.find(@book.user_id)
+    rescue
+      redirect_to books_path
+    end
+
     @new_book = Book.new
   end
 
@@ -47,5 +53,18 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit(:title, :body, :user_id)
+  end
+
+  def correct_user
+    begin
+      book = Book.find(params[:id])
+      user = User.find(book.user_id)
+    rescue
+      redirect_to books_path
+    end
+
+    if user.id != current_user.id
+      redirect_to books_path
+    end
   end
 end
