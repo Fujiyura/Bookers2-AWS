@@ -11,15 +11,18 @@
 
   <body>
 
-    <%= render "shared/header" %>
+    <%= render 'shared/header' %>
 
     <div class='body'>
       <div class='container'>
-        <p id="notice"><%= flash[:notice] %></p>
-        <%= yield %>
+        <p id='notice'><%= flash[:notice] %></p>
+        <div class='row'>
+          <%= yield %>
+        </div>
+      </div>
     </div>
 
-    <%= render "shared/footer" %>
+    <%= render 'shared/footer' %>
 
   </body>
 </html>

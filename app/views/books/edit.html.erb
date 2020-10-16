@@ -2,7 +2,7 @@
   <h1>Editing Book</h1>
 
   <%= form_with model: @book, local: true do |f| %>
-    <%= render partial: "/shared/error_messages", locals: { resource: @book } %>
+    <%= render partial: '/shared/error_messages', locals: { resource: @book } %>
 
     <div class='field row'>
       <label for='book_title'>Title</label>
