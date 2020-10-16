@@ -1,7 +1,9 @@
 <div class='col-md-6 col-md-offset-3'>
   <h1>Editing Book</h1>
 
-  <%= form_with model: @book do |f| %>
+  <%= form_with model: @book, local: true do |f| %>
+    <%= render partial: "/shared/error_messages", locals: { resource: @book } %>
+
     <div class='field row'>
       <label for='book_title'>Title</label>
       <%= f.text_field :title, :class => 'col-xs-12' %>

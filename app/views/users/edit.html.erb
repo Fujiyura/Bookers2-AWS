@@ -1,8 +1,9 @@
-<div class='col-xs-3'>
+<div class='container'>
   <h2>User info</h2>
 
-  <%= form_with model: @target_user do |f| %>
-    
+  <%= form_with model: @target_user, local: true do |f| %>
+    <%= render partial: "/shared/error_messages", locals: { resource: @target_user } %>
+
     <div class='field'>
       <label for='user_name'>Name</label>
       <%= f.text_field :name, :class => 'user_name' %>

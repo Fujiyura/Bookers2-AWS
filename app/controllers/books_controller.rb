@@ -20,11 +20,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(book_params)
-    if book.save
-      redirect_to book_path(book.id), notice: "You have creatad book successfully."
+    @new_book = Book.new(book_params)
+    if @new_book.save
+      redirect_to book_path(@new_book.id), notice: "You have creatad book successfully."
     else
-      redirect_to book_path(book.id), alert: "Book was failure to created."
+      if @books.nil?
+        @books = Book.joins(:user)
+      end
+      render :index
     end
   end
 
@@ -33,11 +36,11 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
-      redirect_to book_path(book.id), notice: "You have updated book successfully."
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to book_path(@book.id), notice: "You have updated book successfully."
     else
-      redirect_to book_path(book.id), alert: "Book was failure to updated."
+      render :edit
     end
   end
 
